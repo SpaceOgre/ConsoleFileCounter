@@ -1,4 +1,5 @@
-﻿using ConsoleFileCounter;
+﻿using System.CommandLine;
+using ConsoleFileCounter;
 using ConsoleFileCounter.Contracts;
 using ConsoleFileCounter.Implementation;
 using Microsoft.Extensions.DependencyInjection;
@@ -13,10 +14,11 @@ try
             )
         .AddTransient<Application>()
         .AddTransient<IFileReaderFactory, FileReaderFactory>()
+        .AddSingleton<WordCounter>()
         .BuildServiceProvider();
 
     var loggerFactory = serviceProvider.GetService<ILoggerFactory>();
-    serviceProvider.GetRequiredService<Application>().Run(args);
+    serviceProvider.GetRequiredService<Application>().Invoke(args);
 }
 catch (Exception e)
 {

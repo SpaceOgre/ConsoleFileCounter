@@ -1,10 +1,10 @@
 ﻿using ConsoleFileCounter.Contracts;
 
-namespace ConsoleFileCounter.Helpers;
+namespace ConsoleFileCounter.Implementation;
 
-public static class WordCounter
+public class WordCounter
 {
-    public static int CountWordInLines(ILineReader linereader, string word)
+    public int CountWordInLines(ILineReader linereader, string word)
     {
         string? line;
         var counter = 0;

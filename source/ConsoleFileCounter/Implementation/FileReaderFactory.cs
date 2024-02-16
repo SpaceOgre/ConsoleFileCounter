@@ -4,8 +4,8 @@ namespace ConsoleFileCounter.Implementation;
 
 public class FileReaderFactory : IFileReaderFactory
 {
-    public ILineReader Create(string filename)
+    public ILineReader Create(FileInfo file)
     {
-        return new FileReader(filename);
+        return new FileReader(file);
     }
 }

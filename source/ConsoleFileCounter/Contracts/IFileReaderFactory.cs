@@ -2,5 +2,5 @@
 
 public interface IFileReaderFactory
 {
-    ILineReader Create(string filename);
+    ILineReader Create(FileInfo file);
 }

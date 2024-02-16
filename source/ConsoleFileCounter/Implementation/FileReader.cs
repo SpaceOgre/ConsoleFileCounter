@@ -2,20 +2,12 @@
 
 namespace ConsoleFileCounter.Implementation;
 
-public sealed class FileReader : ILineReader
+public sealed class FileReader(FileInfo file) : ILineReader
 {
-    private readonly FileStream _fileReader;
-    private readonly StreamReader _streamReader;
-
-    public FileReader(string filename)
-    {
-        _fileReader = File.Open(filename, FileMode.Open);
-        _streamReader = new StreamReader(_fileReader);
-    }
+    private readonly StreamReader _streamReader = file.OpenText();
 
     public void Dispose()
     {
-        _fileReader.Dispose();
         _streamReader.Dispose();
     }
 
