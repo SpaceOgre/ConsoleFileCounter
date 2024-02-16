@@ -1,5 +1,6 @@
 using System.CommandLine;
 using ConsoleFileCounter.Contracts;
+using ConsoleFileCounter.Extensions;
 using ConsoleFileCounter.Implementation;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -11,6 +12,8 @@ public class ApplicationTests
 {
     [Theory]
     [InlineData("Integration/TestFiles/InputFile1.txt", 1)]
+    [InlineData("Integration/TestFiles/.InputFile2", 1)]
+    [InlineData("Integration/TestFiles/InputLargeFile1.txt", 265)]
     public void CountWords_WithValidFile_ReturnsCorrectWordCountAndZeroExitCode(string filePath, int expectedOccurs)
     {
         // Arrange
@@ -20,20 +23,17 @@ public class ApplicationTests
 
         // Act
         var exitCode = application.Invoke([filePath]);
-        var filename = Path.GetFileNameWithoutExtension(filePath);
+        var filename = new FileInfo(filePath).GetFilenameWithoutExtension();
 
         // Assert
         Assert.Equal(ExpectedExitCode, exitCode);
 
-        if (ExpectedExitCode == 0)
-        {
-            logger.Received(1).Log(
-                LogLevel.Information,
-                Arg.Any<EventId>(),
-                Arg.Is<IReadOnlyList<KeyValuePair<string, object?>>>(x => x.ToString() == $"The filename {filename} occurs {expectedOccurs} times."),
-                Arg.Any<Exception>(),
-                Arg.Any<Func<IReadOnlyList<KeyValuePair<string, object?>>, Exception?, string>>());
-        }
+        logger.Received(1).Log(
+            LogLevel.Information,
+            Arg.Any<EventId>(),
+            Arg.Is<IReadOnlyList<KeyValuePair<string, object?>>>(x => x.ToString() == $"The filename {filename} occurs {expectedOccurs} times."),
+            Arg.Any<Exception>(),
+            Arg.Any<Func<IReadOnlyList<KeyValuePair<string, object?>>, Exception?, string>>());
     }
 
     [Theory]

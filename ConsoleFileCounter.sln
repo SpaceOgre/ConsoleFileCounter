@@ -5,7 +5,7 @@ VisualStudioVersion = 17.9.34607.119
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleFileCounter", "source\ConsoleFileCounter\ConsoleFileCounter.csproj", "{6E2D9A7B-3865-4A5B-B053-F33DAA5FD79C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleFileCounter.Tests", "tests\ConsoleFileCounter.Tests\ConsoleFileCounter.Tests.csproj", "{C270CAA5-DBFB-470D-AC74-96ACC6FA47C6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleFileCounter.Tests", "tests\ConsoleFileCounter.Tests\ConsoleFileCounter.Tests.csproj", "{C270CAA5-DBFB-470D-AC74-96ACC6FA47C6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

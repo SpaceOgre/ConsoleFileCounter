@@ -1,4 +1,4 @@
-﻿using ConsoleFileCounter.Contracts;
+using ConsoleFileCounter.Contracts;
 using Microsoft.Extensions.Logging;
 
 namespace ConsoleFileCounter.Implementation;

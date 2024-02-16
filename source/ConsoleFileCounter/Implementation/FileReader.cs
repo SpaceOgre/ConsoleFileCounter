@@ -1,4 +1,4 @@
-﻿using ConsoleFileCounter.Contracts;
+using ConsoleFileCounter.Contracts;
 
 namespace ConsoleFileCounter.Implementation;
 
