@@ -8,11 +8,8 @@ public static class WordCounter
     {
         string? line;
         var counter = 0;
-        while (true)
+        while ((line = linereader.ReadLine()) != null)
         {
-            line = linereader.ReadLine();
-            if (line == null) break;
-
             counter += CountWordInLine(word, line, 0);
         }
 
@@ -21,8 +18,12 @@ public static class WordCounter
 
     private static int CountWordInLine(string word, string line, int counter)
     {
-        var index = line.IndexOf(word, StringComparison.OrdinalIgnoreCase);
-        if (index == -1) return counter;
-        return CountWordInLine(word, line[index..], ++counter);
+        var index = 0;
+        while ((index = line.IndexOf(word, index, StringComparison.OrdinalIgnoreCase)) != -1)
+        {
+            counter++;
+            index += word.Length;
+        }
+        return counter;
     }
 }
