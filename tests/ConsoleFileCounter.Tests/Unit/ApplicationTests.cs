@@ -1,9 +1,8 @@
 using ConsoleFileCounter.Contracts;
-using ConsoleFileCounter.Helpers;
 using Microsoft.Extensions.Logging;
 using NSubstitute;
 
-namespace ConsoleFileCounter.Tests;
+namespace ConsoleFileCounter.Tests.NewFolder;
 
 public class ApplicationTests
 {

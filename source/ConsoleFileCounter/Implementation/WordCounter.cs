@@ -1,8 +1,9 @@
 ﻿using ConsoleFileCounter.Contracts;
+using Microsoft.Extensions.Logging;
 
 namespace ConsoleFileCounter.Implementation;
 
-public class WordCounter
+public class WordCounter(ILogger<WordCounter> logger)
 {
     public int CountWordInLines(ILineReader linereader, string word)
     {
@@ -16,7 +17,7 @@ public class WordCounter
         return counter;
     }
 
-    private static int CountWordInLine(string word, string line, int counter)
+    private int CountWordInLine(string word, string line, int counter)
     {
         var index = 0;
         while ((index = line.IndexOf(word, index, StringComparison.OrdinalIgnoreCase)) != -1)
@@ -24,6 +25,7 @@ public class WordCounter
             counter++;
             index += word.Length;
         }
+        logger.LogDebug($"Line: {line}{Environment.NewLine}Counter: {counter}");
         return counter;
     }
 }

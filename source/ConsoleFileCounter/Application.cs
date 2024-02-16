@@ -1,6 +1,5 @@
 using System.CommandLine;
 using ConsoleFileCounter.Contracts;
-using ConsoleFileCounter.Helpers;
 using ConsoleFileCounter.Implementation;
 using Microsoft.Extensions.Logging;
 
@@ -27,7 +26,7 @@ public class Application : RootCommand
     private void CountWords(FileInfo file)
     {
         using var lineReader = _fileReaderFactory.Create(file);
-        var word = FileHelper.GetFileNameWithoutExtension(file.Name);
+        var word = Path.GetFileNameWithoutExtension(file.Name);
         var wordInLinesCount = _wordCounter.CountWordInLines(lineReader, word);
         _logger.LogInformation($"The filename {word} occurs {wordInLinesCount} times.");
     }
