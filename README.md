@@ -1,4 +1,5 @@
 # ConsoleFileCounter
+[![.NET](https://github.com/SpaceOgre/ConsoleFileCounter/actions/workflows/dotnet.yml/badge.svg)](https://github.com/SpaceOgre/ConsoleFileCounter/actions/workflows/dotnet.yml)
 
 The ConsoleFileCounter is a program that counts how many times a files filename appears in the file.
 
